@@ -4,23 +4,8 @@
 
     
   <url>
-    <loc>https://Praifire.github.io/2018/05/16/hello-world/</loc>
-    <lastmod>2018-05-16T04:59:03.533Z</lastmod>
-    <data>
-        <display>
-        <title>Hello World</title>
-        <pubTime>2018-05-16T04:59:03.541Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://Praifire.github.io/2018/05/16/1/</loc>
-    <lastmod>2018-05-16T04:58:46.893Z</lastmod>
+    <lastmod>2018-05-16T06:05:34.289Z</lastmod>
     <data>
         <display>
         <title>ITIL v3 培训总结一</title>
@@ -33,6 +18,21 @@
              
               <breadCrumb title="培训" url="https://Praifire.github.io/categories/%E5%9F%B9%E8%AE%AD/"/>
           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://Praifire.github.io/2018/05/16/hello-world/</loc>
+    <lastmod>2018-05-16T04:59:03.533Z</lastmod>
+    <data>
+        <display>
+        <title>Hello World</title>
+        <pubTime>2018-05-16T04:59:03.541Z</pubTime>
+        
+         
+           
         </display>
     </data>
     </url>
