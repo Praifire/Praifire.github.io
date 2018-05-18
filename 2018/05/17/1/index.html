@@ -104,7 +104,7 @@
 <meta property="og:image" content="https://koelre.com/upload_image/cknife_4.jpg">
 <meta property="og:image" content="https://koelre.com/upload_image/cknife_5.jpg">
 <meta property="og:image" content="https://koelre.com/upload_image/cknife_6.jpg">
-<meta property="og:updated_time" content="2018-05-18T11:33:32.264Z">
+<meta property="og:updated_time" content="2018-05-18T13:45:35.099Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cknife之木马篇-1">
 <meta name="twitter:description" content="一句话木马概念在web服务器的某个web应用根目录下创建一个网站源码脚本，即web应用是由php编写的，那么木马脚本应由php编写，该脚本文件中只有一句话的脚本，用户通过远程连接该文件，通过POST方式去提交数据，从而完成远程获得webshell的访问权限。 释义如：&amp;lt;?php eval($_POST[&amp;#39;koelre&amp;#39;])?&amp;gt;eval函数是能够将其中的参数作为命令行的命">
@@ -391,7 +391,7 @@
 
       
         <h1 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>在web服务器的某个web应用根目录下创建一个网站源码脚本，即web应用是由php编写的，那么木马脚本应由php编写，该脚本文件中只有一句话的脚本，用户通过远程连接该文件，通过POST方式去提交数据，从而完成远程获得webshell的访问权限。</p>
-<h2 id="释义"><a href="#释义" class="headerlink" title="释义"></a>释义</h2><p>如：<code>&lt;?php eval($_POST[&#39;koelre&#39;])?&gt;</code><br>eval函数是能够将其中的参数作为命令行的命令来解释执行。<br>其中的<code>_POST[&#39;koelre&#39;]</code>则是将传过来的<code>POST body</code>里的<code>skyfucker</code>变量的值获取出来，相当于一句话木马客户端中登陆的密码。通过这样，我们就可以将客户端的数据传递过来并作为命令执行了。</p>
+<h2 id="释义"><a href="#释义" class="headerlink" title="释义"></a>释义</h2><p>如：<code>&lt;?php eval($_POST[&#39;koelre&#39;])?&gt;</code><br>eval函数是能够将其中的参数作为命令行的命令来解释执行。<br>其中的<code>_POST[&#39;koelre&#39;]</code>则是将传过来的<code>POST body</code>里的<code>koelre</code>变量的值获取出来，相当于一句话木马客户端中登陆的密码。通过这样，我们就可以将客户端的数据传递过来并作为命令执行了。</p>
 <h1 id="中国菜刀"><a href="#中国菜刀" class="headerlink" title="中国菜刀"></a>中国菜刀</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>中国菜刀是一款网站管理软件，通过在web应用的目录下留下一个一句话木马，就可以利用这个菜刀客户端去连接来获取webshell了。</p>
 <h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>打开菜刀软件，右键添加<br><img src="/upload_image/cknife_1.jpg" alt=""><br>在地址里填写目标应用中一句话木马的URL，随后的空格里填写客户端登陆的密码，就是之前一句话里的koelre。</p>
 <p>而在config里填写的就是数据库登陆的一些参数了，如果你通过某些途径知道目标主机的数据库账号密码之类的信息，就可以顺利登陆其数据库了。还有脚本类型</p>
@@ -424,7 +424,7 @@
   <p><span>本文标题:</span><a href="/2018/05/17/1/">Cknife之木马篇-1</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Koelre 的个人博客">Koelre</a></p>
   <p><span>发布时间:</span>2018年05月17日 - 19:05</p>
-  <p><span>最后更新:</span>2018年05月18日 - 19:05</p>
+  <p><span>最后更新:</span>2018年05月18日 - 21:05</p>
   <p><span>原始链接:</span><a href="/2018/05/17/1/" title="Cknife之木马篇-1">https://koelre.com/2018/05/17/1/</a>
       <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://koelre.com/2018/05/17/1/"  aria-label="复制成功！"></i></span>
   </p>
@@ -502,8 +502,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/16/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/05/16/1/" rel="next" title="ITIL v3 培训总结-1">
+                <i class="fa fa-chevron-left"></i> ITIL v3 培训总结-1
               </a>
             
           </div>
@@ -512,8 +512,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/18/1/" rel="prev" title="burpsuite之python扩展（1）">
-                burpsuite之python扩展（1） <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/18/1/" rel="prev" title="burpsuite之python扩展-1">
+                burpsuite之python扩展-1 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -591,7 +591,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
