@@ -109,7 +109,7 @@
 <meta property="og:image" content="https://koelre.com/upload_image/BruteForce9.png">
 <meta property="og:image" content="https://koelre.com/upload_image/BruteForce10.png">
 <meta property="og:image" content="https://koelre.com/upload_image/BruteForce11.png">
-<meta property="og:updated_time" content="2018-07-08T02:18:56.923Z">
+<meta property="og:updated_time" content="2018-07-08T02:43:13.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DVWA之Brute Force">
 <meta name="twitter:description" content="Brute Force，即暴力（破解），是指黑客利用密码字典，使用穷举法猜解出用户口令，是现在最为广泛使用的攻击手法之一，实质就是暴力破解攻击。  Low服务器端核心代码 &amp;lt;?php    if(isset($_GET[&amp;apos;Login&amp;apos;])){ //Getusername $user=$_GET[&amp;apos;username&amp;apos;];  //Getpassword $">
@@ -512,8 +512,7 @@ else {
 ?&gt;
 </code></pre><p>`</p>
 <p>比Low级别的代码，Medium级别的代码主要增加了mysql_real_escape_string函数，这个函数会对字符串中的特殊符号（x00，n，r，，’，”，x1a）进行转义，基本上能够抵御sql注入攻击，说基本上是因为查到说 MySQL5.5.37以下版本如果设置编码为GBK，能够构造编码绕过mysql_real_escape_string 对单引号的转义（因实验环境的MySQL版本较新，所以并未做相应验证）；同时，$pass做了MD5校验，杜绝了通过参数password进行sql注入的可能性。但是，依然没有加入有效的防爆破机制（sleep(2)实在算不上）。</p>
-<p>##漏洞利用##</p>
-<p>虽然sql注入不再有效，但依然可以使用Burpsuite进行爆破。</p>
+<h2 id="漏洞利用-1"><a href="#漏洞利用-1" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>虽然sql注入不再有效，但依然可以使用Burpsuite进行爆破。</p>
 <h1 id="High"><a href="#High" class="headerlink" title="High"></a>High</h1><p>服务器端核心代码</p>
 <pre><code>`&lt;?php
 
@@ -563,8 +562,7 @@ generateSessionToken();
 <p>每次服务器返回的登陆页面中都会包含一个随机的user_token的值，用户每次登录时都要将user_token一起提交。服务器收到请求后，会优先做token的检查，再进行sql查询。</p>
 <p><img src="/upload_image/BruteForce11.png" alt=""></p>
 <p>同时，High级别的代码中，使用了stripslashes（去除字符串中的反斜线字符,如果有两个连续的反斜线,则只去掉一个）、 mysql_real_escape_string对参数username、password进行过滤、转义，进一步抵御sql注入。</p>
-<p>##漏洞利用##</p>
-<p>由于加入了Anti-CSRFtoken预防无脑爆破，这里就不推荐用Burpsuite了，还是简单用python写个脚本吧。</p>
+<h2 id="漏洞利用-2"><a href="#漏洞利用-2" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>由于加入了Anti-CSRFtoken预防无脑爆破，这里就不推荐用Burpsuite了，还是简单用python写个脚本吧。</p>
 <p>下面是我自己写的一个脚本（python 3），用户名为admin，对password参数进行爆破并打印结果。 调试中！！</p>
 <p>参考：</p>
 <blockquote>
@@ -810,7 +808,7 @@ generateSessionToken();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Low"><span class="nav-number">1.</span> <span class="nav-text">Low</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#漏洞利用"><span class="nav-number">1.1.</span> <span class="nav-text">漏洞利用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Medium"><span class="nav-number">2.</span> <span class="nav-text">Medium</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#High"><span class="nav-number">3.</span> <span class="nav-text">High</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Low"><span class="nav-number">1.</span> <span class="nav-text">Low</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#漏洞利用"><span class="nav-number">1.1.</span> <span class="nav-text">漏洞利用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Medium"><span class="nav-number">2.</span> <span class="nav-text">Medium</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#漏洞利用-1"><span class="nav-number">2.1.</span> <span class="nav-text">漏洞利用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#High"><span class="nav-number">3.</span> <span class="nav-text">High</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#漏洞利用-2"><span class="nav-number">3.1.</span> <span class="nav-text">漏洞利用</span></a></li></ol></li></ol></div>
             
 
           </div>
