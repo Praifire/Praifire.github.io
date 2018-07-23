@@ -109,7 +109,7 @@
 <meta property="og:image" content="https://koelre.com/upload_image/BruteForce9.png">
 <meta property="og:image" content="https://koelre.com/upload_image/BruteForce10.png">
 <meta property="og:image" content="https://koelre.com/upload_image/BruteForce11.png">
-<meta property="og:updated_time" content="2018-07-23T11:44:43.888Z">
+<meta property="og:updated_time" content="2018-07-23T11:52:24.010Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DVWA之Brute Force">
 <meta name="twitter:description" content="Brute Force，即暴力（破解），是指黑客利用密码字典，使用穷举法猜解出用户口令，是现在最为广泛使用的攻击手法之一，实质就是暴力破解攻击。  Low服务器端核心代码 &amp;lt;?php    if(isset($_GET[&amp;apos;Login&amp;apos;])){ //Getusername $user=$_GET[&amp;apos;username&amp;apos;];  //Getpassword $">
@@ -565,7 +565,7 @@ generateSessionToken();
 <h2 id="漏洞利用-2"><a href="#漏洞利用-2" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>由于加入了Anti-CSRFtoken预防无脑爆破，这里就不推荐用Burpsuite了，还是简单用python写个脚本吧。</p>
 <p>下面是我自己写的一个脚本（python 3），用户名为admin，对password参数进行爆破并打印结果。 调试中！！</p>
 <h1 id="Impossible"><a href="#Impossible" class="headerlink" title="Impossible"></a>Impossible</h1><p>服务器端核心代码</p>
-<p> ‘ &lt;?php</p>
+<p>  ‘ &lt;?php</p>
 <p>  if( isset( $_POST[ ‘Login’ ] ) &amp;&amp; isset ($_POST[‘username’]) &amp;&amp; isset ($_POST[‘password’]) ) {<br>    // Check Anti-CSRF token<br>    checkToken( $_REQUEST[ ‘user_token’ ], $_SESSION[ ‘session_token’ ], ‘index.php’ );</p>
 <pre><code>// Sanitise username input
 $user = $_POST[ &apos;username&apos; ];
@@ -657,10 +657,13 @@ if( ( $data-&gt;rowCount() == 1 ) &amp;&amp; ( $account_locked == false ) ) {
 $data = $db-&gt;prepare( &apos;UPDATE users SET last_login = now() WHERE user = (:user) LIMIT 1;&apos; );
 $data-&gt;bindParam( &apos;:user&apos;, $user, PDO::PARAM_STR );
 $data-&gt;execute();
-</code></pre><p>}</p>
-<p> // Generate Anti-CSRF token<br> generateSessionToken();</p>
-<p> ?&gt; ‘</p>
-<p>参考：</p>
+   }
+
+   // Generate Anti-CSRF token
+   generateSessionToken();
+
+   ?&gt; &apos;
+</code></pre><p>参考：</p>
 <blockquote>
 <p><a href="http://www.freebuf.com/articles/web/116437.html" target="_blank" rel="noopener">http://www.freebuf.com/articles/web/116437.html</a></p>
 </blockquote>
