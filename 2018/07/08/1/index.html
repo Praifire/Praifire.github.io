@@ -109,7 +109,7 @@
 <meta property="og:image" content="https://koelre.com/upload_image/BruteForce9.png">
 <meta property="og:image" content="https://koelre.com/upload_image/BruteForce10.png">
 <meta property="og:image" content="https://koelre.com/upload_image/BruteForce11.png">
-<meta property="og:updated_time" content="2018-07-23T11:52:24.010Z">
+<meta property="og:updated_time" content="2018-07-23T13:46:24.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DVWA之Brute Force">
 <meta name="twitter:description" content="Brute Force，即暴力（破解），是指黑客利用密码字典，使用穷举法猜解出用户口令，是现在最为广泛使用的攻击手法之一，实质就是暴力破解攻击。  Low服务器端核心代码 &amp;lt;?php    if(isset($_GET[&amp;apos;Login&amp;apos;])){ //Getusername $user=$_GET[&amp;apos;username&amp;apos;];  //Getpassword $">
@@ -565,9 +565,13 @@ generateSessionToken();
 <h2 id="漏洞利用-2"><a href="#漏洞利用-2" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>由于加入了Anti-CSRFtoken预防无脑爆破，这里就不推荐用Burpsuite了，还是简单用python写个脚本吧。</p>
 <p>下面是我自己写的一个脚本（python 3），用户名为admin，对password参数进行爆破并打印结果。 调试中！！</p>
 <h1 id="Impossible"><a href="#Impossible" class="headerlink" title="Impossible"></a>Impossible</h1><p>服务器端核心代码</p>
-<p>  ‘ &lt;?php</p>
-<p>  if( isset( $_POST[ ‘Login’ ] ) &amp;&amp; isset ($_POST[‘username’]) &amp;&amp; isset ($_POST[‘password’]) ) {<br>    // Check Anti-CSRF token<br>    checkToken( $_REQUEST[ ‘user_token’ ], $_SESSION[ ‘session_token’ ], ‘index.php’ );</p>
-<pre><code>// Sanitise username input
+<pre><code>    &apos; &lt;?php
+
+     if( isset( $_POST[ &apos;Login&apos; ] ) &amp;&amp; isset ($_POST[&apos;username&apos;]) &amp;&amp; isset ($_POST[&apos;password&apos;]) ) {
+ // Check Anti-CSRF token
+ checkToken( $_REQUEST[ &apos;user_token&apos; ], $_SESSION[ &apos;session_token&apos; ], &apos;index.php&apos; );
+
+// Sanitise username input
 $user = $_POST[ &apos;username&apos; ];
 $user = stripslashes( $user );
 $user = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $user ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
@@ -689,7 +693,7 @@ $data-&gt;execute();
   <p><span>本文标题:</span><a href="/2018/07/08/1/">DVWA之Brute Force</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Koelre 的个人博客">Koelre</a></p>
   <p><span>发布时间:</span>2018年07月08日 - 10:07</p>
-  <p><span>最后更新:</span>2018年07月23日 - 19:07</p>
+  <p><span>最后更新:</span>2018年07月23日 - 21:07</p>
   <p><span>原始链接:</span><a href="/2018/07/08/1/" title="DVWA之Brute Force">https://koelre.com/2018/07/08/1/</a>
       <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://koelre.com/2018/07/08/1/"  aria-label="复制成功！"></i></span>
   </p>
