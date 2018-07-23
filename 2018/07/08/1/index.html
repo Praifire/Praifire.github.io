@@ -109,7 +109,7 @@
 <meta property="og:image" content="https://koelre.com/upload_image/BruteForce9.png">
 <meta property="og:image" content="https://koelre.com/upload_image/BruteForce10.png">
 <meta property="og:image" content="https://koelre.com/upload_image/BruteForce11.png">
-<meta property="og:updated_time" content="2018-07-08T02:43:13.605Z">
+<meta property="og:updated_time" content="2018-07-23T11:34:57.807Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DVWA之Brute Force">
 <meta name="twitter:description" content="Brute Force，即暴力（破解），是指黑客利用密码字典，使用穷举法猜解出用户口令，是现在最为广泛使用的攻击手法之一，实质就是暴力破解攻击。  Low服务器端核心代码 &amp;lt;?php    if(isset($_GET[&amp;apos;Login&amp;apos;])){ //Getusername $user=$_GET[&amp;apos;username&amp;apos;];  //Getpassword $">
@@ -564,6 +564,102 @@ generateSessionToken();
 <p>同时，High级别的代码中，使用了stripslashes（去除字符串中的反斜线字符,如果有两个连续的反斜线,则只去掉一个）、 mysql_real_escape_string对参数username、password进行过滤、转义，进一步抵御sql注入。</p>
 <h2 id="漏洞利用-2"><a href="#漏洞利用-2" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>由于加入了Anti-CSRFtoken预防无脑爆破，这里就不推荐用Burpsuite了，还是简单用python写个脚本吧。</p>
 <p>下面是我自己写的一个脚本（python 3），用户名为admin，对password参数进行爆破并打印结果。 调试中！！</p>
+<h1 id="Impossible"><a href="#Impossible" class="headerlink" title="Impossible"></a>Impossible</h1><p>服务器端核心代码</p>
+<p>‘&lt;?php</p>
+<p>if( isset( $_POST[ ‘Login’ ] ) &amp;&amp; isset ($_POST[‘username’]) &amp;&amp; isset ($_POST[‘password’]) ) {<br>    // Check Anti-CSRF token<br>    checkToken( $_REQUEST[ ‘user_token’ ], $_SESSION[ ‘session_token’ ], ‘index.php’ );</p>
+<pre><code>// Sanitise username input
+$user = $_POST[ &apos;username&apos; ];
+$user = stripslashes( $user );
+$user = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $user ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+
+// Sanitise password input
+$pass = $_POST[ &apos;password&apos; ];
+$pass = stripslashes( $pass );
+$pass = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $pass ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+$pass = md5( $pass );
+
+// Default values
+$total_failed_login = 3;
+$lockout_time       = 15;
+$account_locked     = false;
+
+// Check the database (Check user information)
+$data = $db-&gt;prepare( &apos;SELECT failed_login, last_login FROM users WHERE user = (:user) LIMIT 1;&apos; );
+$data-&gt;bindParam( &apos;:user&apos;, $user, PDO::PARAM_STR );
+$data-&gt;execute();
+$row = $data-&gt;fetch();
+
+// Check to see if the user has been locked out.
+if( ( $data-&gt;rowCount() == 1 ) &amp;&amp; ( $row[ &apos;failed_login&apos; ] &gt;= $total_failed_login ) )  {
+    // User locked out.  Note, using this method would allow for user enumeration!
+    //$html .= &quot;&lt;pre&gt;&lt;br /&gt;This account has been locked due to too many incorrect logins.&lt;/pre&gt;&quot;;
+
+    // Calculate when the user would be allowed to login again
+    $last_login = strtotime( $row[ &apos;last_login&apos; ] );
+    $timeout    = $last_login + ($lockout_time * 60);
+    $timenow    = time();
+
+    /*
+    print &quot;The last login was: &quot; . date (&quot;h:i:s&quot;, $last_login) . &quot;&lt;br /&gt;&quot;;
+    print &quot;The timenow is: &quot; . date (&quot;h:i:s&quot;, $timenow) . &quot;&lt;br /&gt;&quot;;
+    print &quot;The timeout is: &quot; . date (&quot;h:i:s&quot;, $timeout) . &quot;&lt;br /&gt;&quot;;
+    */
+
+    // Check to see if enough time has passed, if it hasn&apos;t locked the account
+    if( $timenow &lt; $timeout ) {
+        $account_locked = true;
+        // print &quot;The account is locked&lt;br /&gt;&quot;;
+    }
+}
+
+// Check the database (if username matches the password)
+$data = $db-&gt;prepare( &apos;SELECT * FROM users WHERE user = (:user) AND password = (:password) LIMIT 1;&apos; );
+$data-&gt;bindParam( &apos;:user&apos;, $user, PDO::PARAM_STR);
+$data-&gt;bindParam( &apos;:password&apos;, $pass, PDO::PARAM_STR );
+$data-&gt;execute();
+$row = $data-&gt;fetch();
+
+// If its a valid login...
+if( ( $data-&gt;rowCount() == 1 ) &amp;&amp; ( $account_locked == false ) ) {
+    // Get users details
+    $avatar       = $row[ &apos;avatar&apos; ];
+    $failed_login = $row[ &apos;failed_login&apos; ];
+    $last_login   = $row[ &apos;last_login&apos; ];
+
+    // Login successful
+    $html .= &quot;&lt;p&gt;Welcome to the password protected area &lt;em&gt;{$user}&lt;/em&gt;&lt;/p&gt;&quot;;
+    $html .= &quot;&lt;img src=\&quot;{$avatar}\&quot; /&gt;&quot;;
+
+    // Had the account been locked out since last login?
+    if( $failed_login &gt;= $total_failed_login ) {
+        $html .= &quot;&lt;p&gt;&lt;em&gt;Warning&lt;/em&gt;: Someone might of been brute forcing your account.&lt;/p&gt;&quot;;
+        $html .= &quot;&lt;p&gt;Number of login attempts: &lt;em&gt;{$failed_login}&lt;/em&gt;.&lt;br /&gt;Last login attempt was at: &lt;em&gt;${last_login}&lt;/em&gt;.&lt;/p&gt;&quot;;
+    }
+
+    // Reset bad login count
+    $data = $db-&gt;prepare( &apos;UPDATE users SET failed_login = &quot;0&quot; WHERE user = (:user) LIMIT 1;&apos; );
+    $data-&gt;bindParam( &apos;:user&apos;, $user, PDO::PARAM_STR );
+    $data-&gt;execute();
+} else {
+    // Login failed
+    sleep( rand( 2, 4 ) );
+
+    // Give the user some feedback
+    $html .= &quot;&lt;pre&gt;&lt;br /&gt;Username and/or password incorrect.&lt;br /&gt;&lt;br/&gt;Alternative, the account has been locked because of too many failed logins.&lt;br /&gt;If this is the case, &lt;em&gt;please try again in {$lockout_time} minutes&lt;/em&gt;.&lt;/pre&gt;&quot;;
+
+    // Update bad login count
+    $data = $db-&gt;prepare( &apos;UPDATE users SET failed_login = (failed_login + 1) WHERE user = (:user) LIMIT 1;&apos; );
+    $data-&gt;bindParam( &apos;:user&apos;, $user, PDO::PARAM_STR );
+    $data-&gt;execute();
+}
+
+// Set the last login time
+$data = $db-&gt;prepare( &apos;UPDATE users SET last_login = now() WHERE user = (:user) LIMIT 1;&apos; );
+$data-&gt;bindParam( &apos;:user&apos;, $user, PDO::PARAM_STR );
+$data-&gt;execute();
+</code></pre><p>}</p>
+<p>// Generate Anti-CSRF token<br>generateSessionToken();</p>
+<p>?&gt;<br>‘</p>
 <p>参考：</p>
 <blockquote>
 <p><a href="http://www.freebuf.com/articles/web/116437.html" target="_blank" rel="noopener">http://www.freebuf.com/articles/web/116437.html</a></p>
@@ -590,7 +686,7 @@ generateSessionToken();
   <p><span>本文标题:</span><a href="/2018/07/08/1/">DVWA之Brute Force</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Koelre 的个人博客">Koelre</a></p>
   <p><span>发布时间:</span>2018年07月08日 - 10:07</p>
-  <p><span>最后更新:</span>2018年07月08日 - 10:07</p>
+  <p><span>最后更新:</span>2018年07月23日 - 19:07</p>
   <p><span>原始链接:</span><a href="/2018/07/08/1/" title="DVWA之Brute Force">https://koelre.com/2018/07/08/1/</a>
       <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://koelre.com/2018/07/08/1/"  aria-label="复制成功！"></i></span>
   </p>
@@ -808,7 +904,7 @@ generateSessionToken();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Low"><span class="nav-number">1.</span> <span class="nav-text">Low</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#漏洞利用"><span class="nav-number">1.1.</span> <span class="nav-text">漏洞利用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Medium"><span class="nav-number">2.</span> <span class="nav-text">Medium</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#漏洞利用-1"><span class="nav-number">2.1.</span> <span class="nav-text">漏洞利用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#High"><span class="nav-number">3.</span> <span class="nav-text">High</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#漏洞利用-2"><span class="nav-number">3.1.</span> <span class="nav-text">漏洞利用</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Low"><span class="nav-number">1.</span> <span class="nav-text">Low</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#漏洞利用"><span class="nav-number">1.1.</span> <span class="nav-text">漏洞利用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Medium"><span class="nav-number">2.</span> <span class="nav-text">Medium</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#漏洞利用-1"><span class="nav-number">2.1.</span> <span class="nav-text">漏洞利用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#High"><span class="nav-number">3.</span> <span class="nav-text">High</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#漏洞利用-2"><span class="nav-number">3.1.</span> <span class="nav-text">漏洞利用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Impossible"><span class="nav-number">4.</span> <span class="nav-text">Impossible</span></a></li></ol></div>
             
 
           </div>
